@@ -1,0 +1,42 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+
+public class EnemyTurnCardGameState : CardGameState
+{
+    public static event Action EnemyTurnBegan;
+    public static event Action EnemyTurnEnded;
+
+    [SerializeField] float _pauseDuration = 1.5f;
+    [SerializeField] Player player = null;
+
+    public override void Enter()
+    {
+        Debug.Log("Enemy Turn: ...Enter");
+        EnemyTurnBegan?.Invoke();
+
+        StartCoroutine(EnemyThinkingRoutine(_pauseDuration));
+    }
+
+    public override void Exit()
+    {
+        Debug.Log("Enemy Turn: Exit...");
+    }
+
+    IEnumerator EnemyThinkingRoutine(float puseDuration)
+    {
+        Debug.Log("Enemy thinking...");
+        yield return new WaitForSeconds(puseDuration);
+
+        if(player != null)
+        {
+            player._currentHealth -= 10;
+        }
+
+        Debug.Log("Enemy performs action");
+        EnemyTurnEnded?.Invoke();
+        // turn over. Go back to Player
+        StateMachine.ChangeState<PlayerTurnCardGameState>();
+    }
+}

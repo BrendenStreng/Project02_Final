@@ -7,6 +7,13 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] Player player;
     [SerializeField] Creature creature;
+    [SerializeField] StreakTracker tracker;
+
+    private void Awake()
+    {
+        tracker = FindObjectOfType<StreakTracker>();
+    }
+
 
     private void Update()
     {

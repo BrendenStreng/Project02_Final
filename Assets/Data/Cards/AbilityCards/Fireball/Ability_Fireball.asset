@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Ability_Fireball
   m_EditorClassIdentifier: 
   _name: Fireball
-  _cost: 5
+  _cost: 12
   _graphic: {fileID: 21300000, guid: f071f407da1a3224ca9d0d8af0b1e67a, type: 3}
   _playEffect: {fileID: 11400000, guid: 3a4b965b7b8541f468afec580666d02a, type: 2}

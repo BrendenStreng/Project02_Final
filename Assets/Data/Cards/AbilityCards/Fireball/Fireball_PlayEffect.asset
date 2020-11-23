@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d465e55251da434f909ebf4569811f2, type: 3}
   m_Name: Fireball_PlayEffect
   m_EditorClassIdentifier: 
-  _damageAmount: 5
+  _damageAmount: 12

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class EnemyTurnCardGameState : CardGameState
 {
@@ -9,12 +10,21 @@ public class EnemyTurnCardGameState : CardGameState
     public static event Action EnemyTurnEnded;
 
     [SerializeField] float _pauseDuration = 1.5f;
-    [SerializeField] Player player = null;
+    [SerializeField] GameObject player = null;
+    [SerializeField] CreatureAI creatue;
+    [SerializeField] GameObject creatureImg;
+
+    private GameObject _slimeToAttack = null;
+
+    public GameObject targetToAttack;
 
     public override void Enter()
     {
         Debug.Log("Enemy Turn: ...Enter");
         EnemyTurnBegan?.Invoke();
+
+        // on entering state automatically target player
+        targetToAttack = player;
 
         StartCoroutine(EnemyThinkingRoutine(_pauseDuration));
     }
@@ -29,12 +39,27 @@ public class EnemyTurnCardGameState : CardGameState
         Debug.Log("Enemy thinking...");
         yield return new WaitForSeconds(puseDuration);
 
-        if(player != null)
+        // look to see if there are any slimes in play
+        _slimeToAttack = GameObject.Find("Slime");
+        
+        // if a slime is not found target player
+        if (_slimeToAttack = null)
         {
-            player._currentHealth -= 10;
+            targetToAttack = player;
+        }
+        // if a slime is found target that slime
+        else
+        {
+            targetToAttack = _slimeToAttack;
         }
 
+        // creature chooses its attack and preforms it
+        creatue.ChooseAttack();
         Debug.Log("Enemy performs action");
+
+        // at end of turn, end dragonRage if it was activated
+        creatue.isRaging = false;
+
         EnemyTurnEnded?.Invoke();
         // turn over. Go back to Player
         StateMachine.ChangeState<PlayerTurnCardGameState>();

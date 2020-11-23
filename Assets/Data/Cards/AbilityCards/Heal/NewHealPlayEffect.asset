@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047b88a9fdaf1ef4bae44c59964e4d90, type: 3}
   m_Name: NewHealPlayEffect
   m_EditorClassIdentifier: 
-  _healthRecovered: 30
+  _healthRecovered: 15

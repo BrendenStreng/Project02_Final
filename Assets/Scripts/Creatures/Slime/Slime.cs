@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Slime : MonoBehaviour, ITargetable,  IHealable
 {
-    public int _currentHealth = 12;
+    public int _currentHealth = 10;
 
     //public HealthBar slimeHealthBar;
 

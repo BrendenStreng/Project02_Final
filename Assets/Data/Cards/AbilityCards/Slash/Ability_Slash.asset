@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Ability_Slash
   m_EditorClassIdentifier: 
   _name: Slash
-  _cost: 3
+  _cost: 8
   _graphic: {fileID: 21300000, guid: 20459f463913b6f49b1be441a949c1a7, type: 3}
   _playEffect: {fileID: 11400000, guid: b2f2b63bfe0fa5a48b63fad48b65385a, type: 2}
